@@ -1,0 +1,5 @@
+CREATE TABLE black_keys (
+    id SERIAL PRIMARY KEY,
+    id_key VARCHAR(6) UNIQUE NOT NULL,
+    password VARCHAR(4) UNIQUE NOT NULL
+);
