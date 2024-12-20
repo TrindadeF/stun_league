@@ -58,4 +58,10 @@ public class PlayerController {
         return ResponseEntity.ok(players);
 
     }
+    @GetMapping("/top10")
+    public ResponseEntity<List<PlayerResponseDTO>> getTop10Players() {
+        List<PlayerResponseDTO> topPlayers = playerServices.getTop10Players();
+        return ResponseEntity.ok(topPlayers);
+    }
+
 }

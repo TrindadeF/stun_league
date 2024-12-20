@@ -152,5 +152,15 @@ public class PlayerServicesImpl  implements PlayerServices {
                 ));
     }
 
+    @Override
+    public List<PlayerResponseDTO> getTop10Players() {
+        List<Player> topPlayers = playerRepository.findTop10ByPoints();
+
+        return topPlayers.stream()
+                .map(PlayerMappers::toPlayerResponseDTO)
+                .toList();
+    }
+
+
 
 }

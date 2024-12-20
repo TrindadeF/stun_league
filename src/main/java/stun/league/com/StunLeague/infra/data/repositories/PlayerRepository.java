@@ -20,4 +20,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Query("SELECT CASE WHEN COUNT(p) > 0 THEN TRUE ELSE FALSE END FROM Player p WHERE p.username = :username")
     boolean existByUsername(String username);
 
+    List<Player> findTop10ByPoints();
+
 }
