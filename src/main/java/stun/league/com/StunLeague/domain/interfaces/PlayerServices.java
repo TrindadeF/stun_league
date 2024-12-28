@@ -25,5 +25,7 @@ public interface PlayerServices {
 
     List<MatchPlayerResponseDTO> getMatchesPlayer(Long playerId);
 
+    List<PlayerResponseDTO> getTop10Players();
+
     Page<PlayerResponseDTO> getPlayers(int pageNo, int pageSize);
 }

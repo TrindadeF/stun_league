@@ -63,7 +63,17 @@ public class UserServicesImpl  implements UserServices {
     @Override
     public UserSavedResponseDTO saveUser(UserRequestSaveDTO dto) {
         User user = dto.toEntity();
-        Player player = new Player(null, dto.username(), 0, 0, BigDecimal.ZERO, user, PlayerStatus.DEFAULT, new ArrayList<>());
+        Player player = Player.builder()
+                .id(null)                          // ID pode ser nulo porque é gerado automaticamente
+                .username(dto.username())          // Nome do jogador
+                .wins(0)                           // Número inicial de vitórias
+                .losses(0)                         // Número inicial de derrotas
+                .points(BigDecimal.ZERO)           // Pontos iniciais
+                .user(user)                        // Objeto User relacionado
+                .playerStatus(PlayerStatus.DEFAULT) // Status inicial do jogador
+                .matches(new ArrayList<>())        // Lista vazia de partidas
+                .build();
+
         player.setUser(user);
         user.setPlayer(player);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));

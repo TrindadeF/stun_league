@@ -22,7 +22,7 @@ public class StunPointsController {
 
     @GetMapping("{username}")
     public ResponseEntity<PointResultDTO> getPointsByUsername(@PathVariable String username) {
-        var player = this.playerRepository.findByUsername(username);
+        var player = this.playerRepository.findByUsernameOrEmail(username);
         return ResponseEntity.ok(new PointResultDTO(player.get().getUsername(), player.get().getPoints()));
     }
 }

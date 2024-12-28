@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import stun.league.com.StunLeague.domain.interfaces.AuthenticationService;
 import stun.league.com.StunLeague.domain.models.dto.auth.AuthenticationResponseDTO;
 import stun.league.com.StunLeague.domain.models.dto.auth.UserRequestLoginDTO;
+import stun.league.com.StunLeague.domain.models.dto.auth.UserRequestRegisterDTO;
+
 
 @Controller
 @RequestMapping("/v1/authenticate")
@@ -22,8 +24,13 @@ public class AuthController {
         this.authenticationService = authenticationService;
     }
 
-    @PostMapping
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponseDTO> authenticate(@RequestBody UserRequestLoginDTO loginDTO) {
         return ResponseEntity.ok(this.authenticationService.login(loginDTO));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<AuthenticationResponseDTO> register(@RequestBody UserRequestRegisterDTO registerDTO) {
+        return ResponseEntity.ok(this.authenticationService.register(registerDTO));
     }
 }

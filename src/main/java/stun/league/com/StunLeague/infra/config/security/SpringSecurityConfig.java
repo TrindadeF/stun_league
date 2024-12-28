@@ -50,6 +50,8 @@ public class SpringSecurityConfig {
                             }
                             req.requestMatchers(
                                     "/v1/authenticate",
+                                    "/v1/authenticate/register",
+                                    "/v1/authenticate/login",
                                     "/v1/users/register",
                                     "/v1/verifications/**",
                                     "/stun-queues/**",

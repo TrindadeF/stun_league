@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Builder;
 import stun.league.com.StunLeague.domain.enums.PlayerStatus;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
 @AllArgsConstructor
 @Table(name = "players")
 public class Player {
@@ -37,6 +39,6 @@ public class Player {
     private List<MatchPlayer> matches;
 
     public Player() {
-
     }
+
 }

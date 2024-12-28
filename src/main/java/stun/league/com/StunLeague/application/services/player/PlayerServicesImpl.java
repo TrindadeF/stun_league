@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 
 @Service
 public class PlayerServicesImpl  implements PlayerServices {
@@ -151,16 +153,20 @@ public class PlayerServicesImpl  implements PlayerServices {
                         x.getUser().getId()
                 ));
     }
-
     @Override
     public List<PlayerResponseDTO> getTop10Players() {
-        List<Player> topPlayers = playerRepository.findTop10ByPoints();
-
-        return topPlayers.stream()
-                .map(PlayerMappers::toPlayerResponseDTO)
-                .toList();
+        Pageable pageable = PageRequest.of(0, 10);
+        return playerRepository.findTop10ByPoints()
+                .stream()
+                .map(player -> new PlayerResponseDTO(
+                        player.getId(),               // Long id
+                        player.getUsername(),         // String username
+                        player.getWins(),             // Integer wins
+                        player.getLosses(),           // Integer losses
+                        player.getPoints(),           // BigDecimal points
+                        player.getUser() != null ? player.getUser().getId() : null // Long userId
+                ))
+                .collect(Collectors.toList());
     }
-
-
 
 }
