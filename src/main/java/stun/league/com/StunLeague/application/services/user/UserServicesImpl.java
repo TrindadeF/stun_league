@@ -213,7 +213,6 @@ public class UserServicesImpl  implements UserServices {
                 Path filePath = Paths.get(filePathString);
 
                 if (Files.exists(filePath)) {
-                    // Lê o conteúdo do arquivo
                     byte[] fileContent = Files.readAllBytes(filePath);
 
                     MediaType mediaType = getMediaType(filePath.toString());
