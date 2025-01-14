@@ -254,10 +254,16 @@ public class UserServicesImpl  implements UserServices {
     }
 
 
-    private UserSavedResponseDTO userToDto( User user) {
-        return new UserSavedResponseDTO(user.getId(), user.getUsername(), user.getEmail(), user.getPlayer().getId());
-
+    private UserSavedResponseDTO userToDto(User user) {
+        return new UserSavedResponseDTO(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getPlayer().getId(),
+                user.getSubscription()
+        );
     }
+
 
     private UserResponseDTO userToDtoInformations(User user, Player player) {
         return new UserResponseDTO(player.getUsername(), user.getName(), user.getEmail(), user.getBirthDate(),

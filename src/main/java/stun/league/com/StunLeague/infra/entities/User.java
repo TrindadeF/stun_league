@@ -41,6 +41,10 @@ public class User  implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<UserConfiguration> userConfigurations;
 
+    @Column(name = "subscription")
+    private String subscription;
+
+
 
     public User() {
     }

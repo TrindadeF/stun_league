@@ -34,6 +34,6 @@ public record UserRequestSaveDTO(
 
 
     public User toEntity() {
-        return new User(null, name(), email(), cpf(), birthDate(), password(), null, null, null, null);
+            return new User(null, name(), email(), cpf(), birthDate(), password(), null, null, null, null, null);
     }
 }

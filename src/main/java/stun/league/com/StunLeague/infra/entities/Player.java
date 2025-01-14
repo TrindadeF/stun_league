@@ -38,7 +38,7 @@ public class Player {
     @JsonManagedReference
     private List<MatchPlayer> matches;
 
-    private String subscription
+    private String subscription;
 
     public Player() {
     }
